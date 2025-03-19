@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Feliz Aniversário!</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Pacifico&family=Poppins:wght@300;400;700&display=swap');
+        
+        body {
+            text-align: center;
+            background: url("imgs/834435-lindo-espaco-fundo-vetor.jpg") no-repeat center center fixed;
+            background-size: cover;
+            font-family: 'Poppins', sans-serif;
+            overflow-x: hidden;
+            color: white;
+            position: relative;
+        }
+
+        .container {
+            position: relative;
+            margin: 50px auto;
+            width: 90%;
+            max-width: 800px;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(15px);
+            border-radius: 20px;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .message {
+            font-size: 3em;
+            background: linear-gradient(45deg, #ff0055, #ff0055);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: fadeIn 2s ease-in-out, pulse 1.5s infinite;
+        }
+
+        .subtitle {
+            font-size: 1.5em;
+            font-weight: 300;
+            margin-top: -5px;
+            color: #ffffff;
+            animation: fadeIn 3s ease-in-out;
+        }
+
+        /* Texto de homenagem */
+        .birthday-message {
+            font-size: 1.2em;
+            color: white;
+            margin-top: 20px;
+            padding: 10px;
+            text-align: left;
+            max-width: 600px; /* Define uma largura máxima para melhor leitura */
+            margin: 0 auto; /* Mantém o bloco centralizado na tela */
+        }
+
+        /* Container do álbum (começa oculto) */
+        .album-container {
+            display: none;
+            margin-top: 20px;
+        }
+
+        /* Senha para acessar o álbum */
+        .password-container {
+            margin-top: 20px;
+        }
+
+        .password-input {
+            padding: 10px;
+            font-size: 1em;
+            border-radius: 8px;
+            border: none;
+            outline: none;
+            text-align: center;
+        }
+
+        .password-btn {
+            padding: 10px 15px;
+            font-size: 1em;
+            cursor: pointer;
+            border: none;
+            border-radius: 8px;
+            background: linear-gradient(45deg, #ff0055, #ff0055);
+            color: white;
+            transition: all 0.3s;
+        }
+
+        .password-btn:hover {
+            transform: scale(1.1);
+            background: linear-gradient(45deg, #ff80ab, #ff4081);
+        }
+
+        /* Estilizando o álbum de fotos */
+        .album {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 10px;
+            margin-top: 20px;
+            padding: 10px;
+        }
+
+        /* Todas as imagens com o mesmo tamanho e moldura */
+        .album img {
+            width: 100%;
+            height: 150px;
+            object-fit: cover;
+            border-radius: 10px;
+            border: 2px solid white;
+            cursor: pointer;
+            transition: transform 0.3s ease-in-out, box-shadow 0.3s;
+        }
+
+        .album img:hover {
+            transform: scale(1.1);
+            box-shadow: 0px 6px 15px rgba(255, 0, 85, 0.5);
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+
+        /* Para garantir que a imagem fique bem centralizada */
+        .modal img {
+            max-width: 90%;
+            max-height: 90%;
+            border-radius: 10px;
+        }
+
+        /* Permite fechar o modal ao clicar na parte escura */
+        .modal:target {
+            display: flex;
+        }
+
+        .close {
+            position: absolute;
+            top: 20px;
+            right: 30px;
+            font-size: 30px;
+            color: white;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <div class="message">Feliz aniversário</div>
+        <div class="subtitle">pra minha segunda mãe!</div>
+
+        <!-- Texto de homenagem -->
+        <div class="birthday-message" id="birthday-message">
+            <p><strong>Maiara, minha segunda mãe,</strong></p>
+        
+            <p>Hoje é um dia mais do que especial, porque é o dia em que o mundo ganhou uma pessoa incrível: você. E eu só posso agradecer por ter você na minha vida.</p>
+        
+            <p>Você sempre esteve ali, com esse seu jeitinho único de cuidar, de se preocupar, de dar bronca quando precisa, mas principalmente, de espalhar amor e carinho por onde passa. Você é aquele tipo de pessoa que ilumina tudo ao redor, que faz qualquer lugar ficar mais aconchegante só de estar presente.</p>
+        
+            <p>Se tem alguém que merece um dia incrível, cheio de felicidade, é você. Eu desejo do fundo do coração que cada momento do seu dia seja tão lindo e especial quanto você é pra mim. Que a vida te retribua com o dobro de amor, alegria e realizações.</p>
+        
+            <p><strong>Feliz aniversário, Maiara!</strong> Que esse novo ciclo venha cheio de coisas boas, que você nunca perca essa luz que te faz ser única, e que a gente continue construindo juntos muitas memórias incríveis. Obrigado por tudo, de verdade!</p>
+        
+            <p><strong>Com muito carinho,</strong><br>Matheus</p>
+        </div>
+        
+
+        <!-- Entrada de senha para acessar o álbum -->
+        <div class="password-container" id="password-container">
+            <p>Digite a data de aniversário para acessar o álbum:</p>
+            <input type="text" id="password" class="password-input" placeholder="DD/MM/AAAA">
+            <button class="password-btn" onclick="checkPassword()"> Acessar</button>
+        </div>
+
+        <!-- Álbum de Fotos (começa oculto) -->
+        <div class="album-container" id="album-container">
+            <div class="album">
+                <img src="imgs/img1.jpg" alt="Foto 1">
+                <img src="imgs/img2.jpg" alt="Foto 2">
+                <img src="imgs/img3.jpg" alt="Foto 3">
+                <img src="imgs/img4.jpg" alt="Foto 4">
+                <img src="imgs/img5.jpg" alt="Foto 5">
+                <img src="imgs/img6.jpg" alt="Foto 6">
+                <img src="imgs/IMG-20250319-WA0005.jpg" alt="Foto 7">
+                <img src="imgs/IMG-20250319-WA0009.jpg" alt="Foto 11">
+                <img src="imgs/IMG-20250319-WA0012.jpg" alt="Foto 14">
+                <img src="imgs/IMG-20250319-WA0015.jpg" alt="Foto 17">
+                <img src="imgs/IMG-20250319-WA0016.jpg" alt="Foto 18">
+                <img src="imgs/IMG-20250319-WA0017.jpg" alt="Foto 19">
+                <img src="imgs/IMG-20250319-WA0021.jpg" alt="Foto 23">
+                <img src="imgs/IMG-20250319-WA0022.jpg" alt="Foto 24">
+                <img src="imgs/IMG-20250319-WA0023.jpg" alt="Foto 25">
+                <img src="imgs/IMG-20250319-WA0024.jpg" alt="Foto 26">
+            </div>
+        </div>
+        
+    <!-- Modal para exibição de imagem ampliada -->
+        <div id="imageModal" class="modal">
+        <span class="close" onclick="closeModal()">&times;</span>
+        <img id="modalImage" src="" alt="Imagem ampliada">
+        </div>
+
+
+
+    </div>
+
+    <script>
+        // Senha de acesso ao álbum (data de aniversário)
+        const correctPassword = "18031990"; // Você pode alterar essa senha
+
+        function checkPassword() {
+            const enteredPassword = document.getElementById("password").value;
+            if (enteredPassword === correctPassword) {
+                document.getElementById("album-container").style.display = "block"; // Mostra o álbum
+                document.getElementById("password-container").style.display = "none"; // Esconde o campo de senha
+                document.getElementById("birthday-message").style.display = "none"; // Esconde o texto de homenagem
+            } else {
+                alert("Senha incorreta! Tente novamente.");
+            }
+        }
+    </script>
+
+    <script>
+    // Seleciona todas as imagens do álbum e adiciona evento de clique
+document.querySelectorAll(".album img").forEach(img => {
+    img.addEventListener("click", function () {
+        document.getElementById("modalImage").src = this.src;
+        document.getElementById("imageModal").style.display = "flex";
+    });
+});
+
+// Função para fechar o modal ao clicar no botão "X"
+function closeModal() {
+    document.getElementById("imageModal").style.display = "none";
+}
+
+    // Fecha o modal ao clicar fora da imagem
+document.getElementById("imageModal").addEventListener("click", function (event) {
+    if (event.target === this) {
+        closeModal();
+    }
+});
+
+    </script>
+
+</body>
+</html>
+
+
+
